@@ -27,17 +27,17 @@ services:
       - 443:443
     depends_on:
       - todo-nodejs
-    volumes:
-      - ./ssl:/etc/letsencrypt
-      - ./nginx.conf:/etc/nginx/nginx.conf
+    # volumes:
+    #   - ./ssl:/etc/letsencrypt
+    #   - ./nginx.conf:/etc/nginx/nginx.conf
     build:
       context: ./frontend
       args:
         #- REACT_APP_API_URL=https://todochat.xyz/api
         #- REACT_APP_SOCKET_URL=https://todochat.xyz
         #- REACT_APP_URL=https://todochat.xyz
-        - REACT_APP_API_URL=http://andtodo.work.gd/api
-        - REACT_APP_URL=http://andtodo.work.gd
+        - REACT_APP_API_URL=localhost:4000
+        - REACT_APP_URL=
     networks:
       - todo
 

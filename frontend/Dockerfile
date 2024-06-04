@@ -15,8 +15,8 @@ ENV REACT_APP_URL=$REACT_APP_URL
 COPY . .
 RUN yarn run build
 
-FROM nginx:latest
-COPY --from=build-step /app/build /usr/share/nginx/html
+# FROM nginx:latest
+# COPY --from=build-step /app/build /usr/share/nginx/html
 # # Remove the default NGINX configuration (if any) and copy custom NGINX config
 # RUN rm /etc/nginx/conf.d/default.conf
 # COPY /app/nginx.conf /etc/nginx/conf.d
@@ -25,4 +25,4 @@ COPY --from=build-step /app/build /usr/share/nginx/html
 # EXPOSE 80
 
 # Start NGINX when the container runs
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
