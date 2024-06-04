@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  todo-nodejs:
+    image: todo-nodejs
+    container_name: todo-nodejs
+    restart: on-failure:5
+    ports:
+      - 4000:4000
+    environment:
+      SERVER_PORT: 4000
+      MONGODB_PATH: mongodb+srv://breakdown2501:moJjTrI98Lvm8v1A@cluster0.0sh7klt.mongodb.net/todo?retryWrites=true&w=majority&appName=Cluster0
+      JWT_KEY: todo
+      JWT_LIFE_ACCESS_TOKEN: 3d
+      JWT_LIFE_REFRESH_TOKEN: 90d
+    build:
+      context: ./backend
+    networks:
+      - todo
+
+  todo-reactjs:
+    image: todo-reactjs
+    container_name: todo-reactjs
+    restart: on-failure:5
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - todo-nodejs
+    volumes:
+      - ./ssl:/etc/letsencrypt
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    build:
+      context: ./frontend
+      args:
+        #- REACT_APP_API_URL=https://todochat.xyz/api
+        #- REACT_APP_SOCKET_URL=https://todochat.xyz
+        #- REACT_APP_URL=https://todochat.xyz
+        - REACT_APP_API_URL=http://andtodo.work.gd/api
+        - REACT_APP_URL=http://andtodo.work.gd
+    networks:
+      - todo
+
+networks:
+  todo:
+    driver: bridge
+
