@@ -23,8 +23,7 @@ services:
     container_name: todo-reactjs
     restart: on-failure:5
     ports:
-      - 80:80
-      - 443:443
+      - 3000:3000
     depends_on:
       - todo-nodejs
     # volumes:
