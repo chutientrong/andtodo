@@ -51,7 +51,7 @@ class AuthService {
 
     await User.updateOne(
       { _id: req._id },
-      { $push: { refreshTokens: { token: "", source: "" } } }
+      { $push: { refreshTokens: { token: "", source: "" , isActived: false} } }
     );
   }
 

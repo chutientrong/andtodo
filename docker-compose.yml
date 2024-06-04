@@ -36,7 +36,7 @@ services:
         #- REACT_APP_API_URL=https://todochat.xyz/api
         #- REACT_APP_SOCKET_URL=https://todochat.xyz
         #- REACT_APP_URL=https://todochat.xyz
-        - REACT_APP_API_URL=localhost:4000
+        - REACT_APP_API_URL=http://localhost:4000
         - REACT_APP_URL=
     networks:
       - todo

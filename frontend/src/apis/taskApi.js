@@ -20,12 +20,13 @@ const tasksApi = {
 
   updateTask: ({ id, title, description }) => {
     return axiosClient.put(`${API_URL}/${id}`, {
-        title, description
+      title,
+      description,
     });
   },
-  updateStage: ({ tasks }) => {
+  updateStage: (tasks) => {
     return axiosClient.post(`${API_URL}/stage`, {
-        tasks
+      tasks,
     });
   },
 };

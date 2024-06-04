@@ -46,7 +46,8 @@ class AuthController {
   // [POST] /signup
   async signup(req, res, next) {
     try {
-      await authService.signup(req.body);
+     const user = await authService.signup(req.body);
+     console.log('user: ', user);
       return res
         .status(201)
         .json({ data: { message: "Sign up is successfull" } });

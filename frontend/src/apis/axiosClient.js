@@ -29,9 +29,15 @@ axiosClient.interceptors.response.use(
   },
   async (error) => {
     const refreshToken = localStorage.getItem("refreshToken");
+
     if (error && error.response && error.response.status !== 401) {
       return Promise.reject(error);
     }
+    if (!refreshToken) {
+      window.location.href = `${routes.LOGIN}`;
+      return;
+    }
+    // console.log('response');
     axios.interceptors.response.eject(axiosClient.interceptors);
     return axios
       .post("/auth/refresh-token", {
@@ -45,7 +51,9 @@ axiosClient.interceptors.response.use(
       .catch((error) => {
         localStorage.removeItem("token");
         localStorage.removeItem("refreshToken");
-        window.location.href = `${routes.LOGIN}`;
+        // setTimeout(() => {
+        //     window.location.href = `${routes.LOGIN}`;
+        //   }, 1000);
         console.log("error", error);
         return Promise.reject(error);
       })
