@@ -21,6 +21,7 @@ services:
   todo-reactjs:
     image: todo-reactjs
     container_name: todo-reactjs
+    command: npm start
     restart: on-failure:5
     ports:
       - 3000:3000
@@ -39,7 +40,18 @@ services:
         - REACT_APP_URL=
     networks:
       - todo
-
+  nginx:
+    container_name: todo-nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - todo-reactjs
+      - todo-nodejs
+    networks:
+      - todo
 networks:
   todo:
     driver: bridge
