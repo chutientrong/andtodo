@@ -17,3 +17,12 @@ RUN yarn run build
 
 FROM nginx:latest
 COPY --from=build-step /app/build /usr/share/nginx/html
+# # Remove the default NGINX configuration (if any) and copy custom NGINX config
+# RUN rm /etc/nginx/conf.d/default.conf
+# COPY /app/nginx.conf /etc/nginx/conf.d
+
+# # Expose port 80 for incoming traffic
+# EXPOSE 80
+
+# Start NGINX when the container runs
+CMD ["nginx", "-g", "daemon off;"]
