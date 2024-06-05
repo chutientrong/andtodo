@@ -1,5 +1,11 @@
 # Todo Project using MERN stack (Mongodb, Express.js, React.js and Node.js) 
 
+# Information
+1. Website: `https://andtodo.work.gd/`
+2. Default account: 
+- email: `admin@gmail.com`
+- password: `admin123`
+
 # Setup instruction
 ## Step 1: install package dependencies
   - Go to /backend directory and run `npm install` or `yarn install`.
