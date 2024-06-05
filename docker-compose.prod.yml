@@ -39,17 +39,14 @@ services:
       - todo
   nginx:
     container_name: todo-nginx
-    image: todo-nginx
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx/production
+    image: nginx:latest
     ports:
       - 80:80
       - 443:443
     volumes:
       - ./nginx/tls:/tls
       - /etc/letsencrypt:/etc/letsencrypt
-      - ./nginx/production/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - todo-reactjs
       - todo-nodejs
