@@ -21,7 +21,7 @@ ENV NODE_OPTIONS --openssl-legacy-provider
 COPY . .
 RUN yarn run build
 
-# FROM nginx:latest
+FROM nginx:latest
 COPY --from=build-step /app/build /usr/share/nginx/html
 
 # CMD [ "yarn", "start" ]
