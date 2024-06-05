@@ -37,21 +37,21 @@ services:
         - REACT_APP_URL=https://andtodo.work.gd # production
     networks:
       - todo
-  nginx:
-    container_name: todo-nginx
-    image: nginx:latest
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./nginx/tls:/tls
-      - /etc/letsencrypt:/etc/letsencrypt
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - todo-reactjs
-      - todo-nodejs
-    networks:
-      - todo
+  # nginx:
+  #   container_name: todo-nginx
+  #   image: nginx:latest
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - ./nginx/tls:/tls
+  #     - /etc/letsencrypt:/etc/letsencrypt
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     - todo-reactjs
+  #     - todo-nodejs
+  #   networks:
+  #     - todo
 networks:
   todo:
     driver: bridge
