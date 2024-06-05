@@ -9,8 +9,8 @@ dotenv.config()
 
 await connect()
 
-const PORT = process.env.SERVER_PORT || 9000
-const origin = process.env.CORS_ORIGIN || 'http://localhost:3000'
+const PORT = process.env.SERVER_PORT || 4000
+const origin = process.env.CORS_ORIGIN || 'http://47.237.5.1:3000'
 
 const app = express()
 
