@@ -20,3 +20,17 @@
 - Backend: `npm run serve` 
 - Frontend: `npm run start`
 
+# Server configuration
+## Step 1: install package dependencies
+- Clone repository: `git clone https://github.com/chutientrong/andtodo.git`
+
+## Step 2: generate ssl key
+- Open command and type: 
+1. `openssl genrsa -out privkey.pem 2048`
+2. `openssl req -new -key privkey.pem -out cert.csr`
+3. `openssl x509 -req -days 365 -in cert.csr -signkey privkey.pem -out fullchain.pem`
+
+## Step 4: deploy
+  cd to source repository and type: `cd <repository_name>`
+- Development: `docker compose up --build -d`
+- Production: `docker compose -f docker-compose.dev.yml up --build -d`
